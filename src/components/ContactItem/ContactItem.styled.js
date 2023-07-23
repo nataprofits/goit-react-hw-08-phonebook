@@ -14,7 +14,7 @@ export const ListItem = styled.li`
  align-items: center;
 
  &:not(:last-child) {
-   padding-bottom: 5px;
+   padding-bottom: 6px;
    border-bottom: 1px dashed rgba(255, 115, 0, 0.8);
    margin-bottom: 5px;
  }
