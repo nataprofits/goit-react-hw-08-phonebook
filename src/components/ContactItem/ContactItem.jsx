@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { fetchContacts } from '../../redux/operations';
 
 export const ContactItem = ({ contact }) => {
- 
   const dispatch = useDispatch();
 
   const handleDeleteContact = async () => {
@@ -16,17 +15,14 @@ export const ContactItem = ({ contact }) => {
   return (
     <List>
       <ListItem key={contact.id}>
-        {contact.name} : {contact.phone} 
-        <Button
-          onClick={handleDeleteContact}
-          
-        >
+        {contact.name} : {contact.number}
+        <Button onClick={handleDeleteContact}>
           Delete
         </Button>
       </ListItem>
     </List>
   );
 };
-ContactItem.propTypes = {
+ContactListItem.propTypes = {
   contact: PropTypes.object.isRequired,
 };

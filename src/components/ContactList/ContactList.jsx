@@ -1,5 +1,5 @@
 import { ContactItem } from 'components/ContactItem/ContactItem';
-import { List } from './ContactList.styled';
+import { List, Message } from './ContactList.styled';
 
 import { getFilterValue } from '../../redux/filterSlice';
 import { selectContactsItems } from '../../redux/contactsSlice';
@@ -24,7 +24,7 @@ export const ContactList = () => {
   const filteredContacts = getFilteredContacts(contacts, filter);
 
   if (!filteredContacts || filteredContacts.length === 0) {
-    return <div>No contacts found</div>;
+    return <Message>No contacts found</Message>;
   }
   return (
     <List>

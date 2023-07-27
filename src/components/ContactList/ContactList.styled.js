@@ -20,6 +20,12 @@ export const ListItem = styled.li`
    margin-bottom: 5px;
  }
 `;
+export const Message = styled.div`
+  color: #9c27b0;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 20px;
+`;
 
 export const Button = styled.button`
   width: 50px;

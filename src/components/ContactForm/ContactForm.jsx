@@ -1,77 +1,63 @@
-import { useState } from 'react';
-import {StyledForm, Label, Input, Button} from './ContactForm.styled';
 
+import {StyledForm, Label, Input, Button} from './ContactForm.styled';
+import FormError from 'components/FormError/FormError';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContactsItems } from '../../redux/contactsSlice';
 import { addContact } from 'redux/operations';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const initialValues = { name: '', number: '' };
+
+const schema = Yup.object().shape({
+  name: Yup.string().min(3).required(),
+  number: Yup.number().min(4).required(),
+});
 
 export default function ContactForm() {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-
   const dispatch = useDispatch();
   const contacts = useSelector(selectContactsItems);
 
-  const handleChange = evt => {
-    const { name, value } = evt.target;
-
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'phone':
-        setPhone(value);
-        break;
-      default:
-        return;
-    }
-  };
-
-  const handleSubmit = evt => {
-    evt.preventDefault();
+  const handleSubmit = (values, { resetForm }) => {
+    const { name, number } = values;
     const isDuplicateName = contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
 
     if (isDuplicateName) {
-      alert(`${name} is already in contacts`);
+      toast.info(`${name} is already in contacts`);
       return;
     }
 
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number }));
 
-    setName('');
-    setPhone('');
+    resetForm();
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <Label htmlFor="user_name">
-        Name
-        <Input
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          value={name}
-          onChange={handleChange}
-        />
-      </Label>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={schema}
+      onSubmit={handleSubmit}
+    >
+      <StyledForm>
+        <Label htmlFor="name">
+          Name
+          <Input type="text" name="name" />
+          <FormError name="name" />
+        </Label>
 
-      <Label htmlFor="user_tel">
-        Number
-        <Input
-          type="tel"
-          name="phone"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          value={phone}
-          onChange={handleChange}
-        />
-      </Label>
-      <Button type="submit">Add contact</Button>
-    </StyledForm>
+        <Label htmlFor="tel">
+          Number
+          <Input type="tel" name="number" />
+          <FormError name="number" />
+        </Label>
+        <Button type="submit">
+          Add contact
+        </Button>
+      </StyledForm>
+    </Formik>
   );
 }

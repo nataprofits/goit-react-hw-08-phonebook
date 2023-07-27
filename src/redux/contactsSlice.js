@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './operations';
+import { logOut } from './auth/auth-operations';
 
 const hanlePanding = state => {
   state.isLoading = true;
@@ -44,6 +45,11 @@ const contactSlice = createSlice({
       state.items = state.items.filter(contact => contact.id !== id);
     },
     [deleteContact.rejected]: handleRejected,
+    [logOut.fulfilled](state){
+      state.items = [];
+      state.error = null;
+      state.isLoading = false;
+    },
   },
 });
 
