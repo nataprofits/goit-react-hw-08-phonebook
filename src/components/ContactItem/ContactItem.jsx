@@ -23,6 +23,6 @@ export const ContactItem = ({ contact }) => {
     </List>
   );
 };
-ContactListItem.propTypes = {
+ContactItem.propTypes = {
   contact: PropTypes.object.isRequired,
 };
