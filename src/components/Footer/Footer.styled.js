@@ -1,5 +1,4 @@
-import styled from '@emotion/styled';
-
+import styled from 'styled-components';
 export const FooterWrap = styled.footer`
   adding-bottom: 24px;
   background-color: transparent;

@@ -19,7 +19,7 @@ const filterSlice = createSlice({
 });
 export const { setFilter } = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;
-
+////////////////////////SELECTORS///////////////////
 export const getFilterValue = state => {
   return state.filter.filterValue;
 };

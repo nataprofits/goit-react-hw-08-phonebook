@@ -1,48 +1,20 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
-export const List = styled.ul`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  row-gap: 10px;
-  margin-left: 0px;
-  /* border: 2px solid rgba(255, 115, 0, 0.8);; */
-`;
-
-export const ListItem = styled.li`
-  display: flex;
- justify-content: space-between;
- align-items: center;
-
- &:not(:last-child) {
-   padding-bottom: 5px;
-   border-bottom: 1px dashed rgba(255, 115, 0, 0.8);
-   margin-bottom: 5px;
- }
-`;
 export const Message = styled.div`
   color: #9c27b0;
   font-size: 25px;
   font-weight: 700;
   margin-bottom: 20px;
 `;
-
-export const Button = styled.button`
-  width: 50px;
-  height: 25px;
-
-  color: rgba(242, 255, 0, 0.5);
-  background: none;
-  border: 1px solid rgba(242, 255, 0, 0.8);
-  border-radius: 5px;
-
-  transition: border-color var(--animation), background-color var(--animation),
-    color var(--animation);
-
-  &:hover,
-  &:focus {
-    border-color: rgba(165, 0, 0, 0.8);
-    background-color: rgba(165, 0, 0, 0.2);
-    color: rgba(242, 255, 0, 0.8);
-  }
+export const ContactsList = styled.ul`
+  margin-top: 20px;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 20px;
+  color: black;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 20px;
 `;

@@ -1,8 +1,8 @@
-import { ContactItem } from 'components/ContactItem/ContactItem';
-import { List, Message } from './ContactList.styled';
+import { ContactListItem } from 'components/ContactListItem/ContactListItem';
+import { ContactsList, Message } from './ContactList.styled';
 
 import { getFilterValue } from '../../redux/filterSlice';
-import { selectContactsItems } from '../../redux/contactsSlice';
+import { selectContactsItems } from '../../redux/contacts/contactsSlice';
 import { useSelector } from 'react-redux';
 
 export const ContactList = () => {
@@ -27,10 +27,10 @@ export const ContactList = () => {
     return <Message>No contacts found</Message>;
   }
   return (
-    <List>
+    <ContactsList>
       {filteredContacts.map(contact => (
-        <ContactItem key={contact.id} contact={contact} />
+        <ContactListItem key={contact.id} contact={contact} />
       ))}
-    </List>
+    </ContactsList>
   );
 };

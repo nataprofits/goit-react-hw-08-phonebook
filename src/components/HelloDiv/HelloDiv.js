@@ -1,5 +1,5 @@
+// import { MdContactPhone } from 'react-icons/md';
 import { HelloTitle, HelloWrap, Icon, Text } from './HelloDiv.styled';
-
 export default function HelloDiv() {
   return (
     <HelloWrap>

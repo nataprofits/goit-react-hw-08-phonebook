@@ -1,11 +1,15 @@
-
-import {StyledForm, Label, Input, Button} from './ContactForm.styled';
+import {
+  FormWrap,
+  Label,
+  Input,
+  ButtonAddDeleteContact,
+} from './ContactForm.styled';
 import FormError from 'components/FormError/FormError';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContactsItems } from '../../redux/contactsSlice';
-import { addContact } from 'redux/operations';
+import { selectContactsItems } from '../../redux/contacts/contactsSlice';
+import { addContact } from 'redux/contacts/contacts-operations';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -42,7 +46,7 @@ export default function ContactForm() {
       validationSchema={schema}
       onSubmit={handleSubmit}
     >
-      <StyledForm>
+      <FormWrap>
         <Label htmlFor="name">
           Name
           <Input type="text" name="name" />
@@ -54,10 +58,10 @@ export default function ContactForm() {
           <Input type="tel" name="number" />
           <FormError name="number" />
         </Label>
-        <Button type="submit">
+        <ButtonAddDeleteContact type="submit">
           Add contact
-        </Button>
-      </StyledForm>
+        </ButtonAddDeleteContact>
+      </FormWrap>
     </Formik>
   );
 }

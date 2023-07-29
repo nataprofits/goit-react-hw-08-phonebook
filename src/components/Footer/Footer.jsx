@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
       <FooterWrap>
           <FooterDiv>
-              <FooterText>Copyright © created by Helen 2023 </FooterText>
+              <FooterText>Copyright © created 07/2023 </FooterText>
           </FooterDiv>
     </FooterWrap>
   );

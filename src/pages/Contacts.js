@@ -4,7 +4,7 @@ import { fetchContacts } from 'redux/contacts/contacts-operations';
 import { ContactList } from 'components/ContactList/ContactList';
 import ContactForm from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
-import { Title } from '../components/App/App.styled';
+import { Container, Div, Title } from './Contacts.styled';
 import { selectIsLoading } from '../redux/contacts/contactsSlice';
 import { selectError } from '../redux/contacts/contactsSlice';
 import { Loader } from 'components/Loader/Loader';
@@ -19,15 +19,20 @@ export default function Contacts() {
   }, [dispatch]);
 
   return (
-    <>
-      {isLoading && !error && <b>Request in progress...</b>}
+    <Container>
+      <Div>
+        {isLoading && !error && <b>Request in progress...</b>}
 
-      <Title>Add new contact</Title>
-      <ContactForm />
-      {isLoading && <Loader />}
-      <ContactList />
-      <Title>Find the desired contact</Title>
-      <Filter />
-    </>
+        <Title>Add new contact</Title>
+        <ContactForm />
+      </Div>
+      <Div>
+        {isLoading && <Loader />}
+
+        <Title>Find the desired contact</Title>
+        <Filter />
+        <ContactList />
+      </Div>
+    </Container>
   );
 }
