@@ -9,7 +9,7 @@ export const Div = styled.div`
 display: block;
 margin-left: auto;
 margin-right: auto;
-
+padding: 10px;
 `;
 
 export const Title = styled.h1`
